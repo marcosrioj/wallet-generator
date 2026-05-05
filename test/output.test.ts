@@ -2,6 +2,7 @@ import { mkdirSync, rmSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import { sanitizePublicRecord, savePublicRecords, hasForbiddenSecretText } from "../src/security/safeOutput";
+import type { PublicAddressRecord } from "../src/types";
 
 describe("Saída pública", () => {
   const tmpDir = join(process.cwd(), "test-output");
@@ -38,7 +39,7 @@ describe("Saída pública", () => {
           createdAt: "2026-01-01T00:00:00.000Z",
           warning: "endereço público",
           privateKey: "abc",
-        } as unknown as Record<string, unknown>,
+        } as unknown as PublicAddressRecord,
       ], tmpDir);
     }).toThrow();
   });

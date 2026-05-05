@@ -19,8 +19,7 @@ export function hasForbiddenSecretText(value: string): boolean {
 }
 
 function ensureNoForbiddenValues(record: PublicAddressRecord): void {
-  for (const key of Object.keys(record)) {
-    const value = (record as Record<string, unknown>)[key];
+  for (const value of Object.values(record)) {
     if (typeof value === "string" && hasForbiddenSecretText(value)) {
       throw new Error("Tentativa de salvar possível dado sensível no output.");
     }
@@ -98,7 +97,7 @@ function ensureDirectory(base: string): void {
 }
 
 export function savePublicRecords(
-  records: readonly Record<string, unknown>[],
+  records: readonly PublicAddressRecord[],
   basePath = "output"
 ): void {
   const safeRecords = records.map((record) => sanitizePublicRecord(record));
