@@ -56,10 +56,9 @@ npm run wizard
 O menu mostra:
 
 1. Ethereum/EVM
-2. Bitcoin Testnet
-3. Bitcoin Mainnet
+2. Bitcoin Mainnet
 
-Prefira testnet para testes. Mainnet usa dinheiro real.
+Use somente quando o solicitante precisa de carteira de producao. Bitcoin mainnet usa dinheiro real.
 
 ## 9. Entregar Endereco Publico
 

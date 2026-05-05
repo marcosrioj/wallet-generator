@@ -8,7 +8,6 @@ Exemplos:
 
 - Ethereum/EVM: comeca com `0x`
 - Bitcoin mainnet Native SegWit: comeca com `bc1`
-- Bitcoin testnet Native SegWit: comeca com `tb1`
 
 Confira sempre a rede antes de usar.
 
@@ -30,11 +29,9 @@ Nunca compartilhe:
 
 O suporte pode ajudar a operar a ferramenta, mas nao deve ver a frase.
 
-## Testnet E Mainnet
+## Redes De Producao
 
-Testnet e rede de testes. Moedas de testnet nao tem valor real e enderecos Bitcoin testnet comecam com `tb1`.
-
-Mainnet e rede real. Fundos em mainnet tem valor real. Enderecos Bitcoin mainnet Native SegWit comecam com `bc1`.
+Esta ferramenta gera somente carteiras de producao. Fundos em redes de producao tem valor real. Enderecos Bitcoin mainnet Native SegWit comecam com `bc1`.
 
 Para dinheiro real ou valor alto, use hardware wallet ou multisig.
 

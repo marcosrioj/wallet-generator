@@ -10,10 +10,9 @@ Avisos importantes:
 
 Opcoes:
   1. Gerar endereco Ethereum/EVM
-  2. Gerar endereco Bitcoin Testnet
-  3. Gerar endereco Bitcoin Mainnet
-  4. Validar endereco publico
-  5. Mostrar checklist de seguranca
+  2. Gerar endereco Bitcoin Mainnet
+  3. Validar endereco publico
+  4. Mostrar checklist de seguranca
   0. Sair
 `;
 
@@ -32,18 +31,11 @@ Checklist de seguranca:
 export const REVEAL_CONFIRMATION =
   "EU ENTENDO QUE A FRASE DE RECUPERACAO CONTROLA OS FUNDOS";
 
-export function generationIntro(kind: "ethereum" | "bitcoin-testnet" | "bitcoin-mainnet"): string {
+export function generationIntro(kind: "ethereum" | "bitcoin-mainnet"): string {
   if (kind === "ethereum") {
     return [
       "Sera gerada uma nova carteira Ethereum/EVM localmente.",
       "Primeiro sera exibido apenas o endereco publico 0x..."
-    ].join("\n");
-  }
-
-  if (kind === "bitcoin-testnet") {
-    return [
-      "Sera gerada uma nova carteira Bitcoin testnet Native SegWit.",
-      "O endereco publico comecara com tb1 e deve ser usado apenas em rede de testes."
     ].join("\n");
   }
 

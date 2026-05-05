@@ -6,8 +6,7 @@ import { getBitcoinJsNetwork } from "../wallets/bitcoin.js";
 
 export type AddressValidationType =
   | "ethereum"
-  | "bitcoin-mainnet"
-  | "bitcoin-testnet";
+  | "bitcoin-mainnet";
 
 export type AddressValidationHint = AddressValidationType | "auto";
 
@@ -42,11 +41,7 @@ export function validatePublicAddress(
   }
 
   if (hint === "bitcoin-mainnet") {
-    return validateBitcoin(input, "mainnet");
-  }
-
-  if (hint === "bitcoin-testnet") {
-    return validateBitcoin(input, "testnet");
+    return validateBitcoin(input);
   }
 
   if (input.startsWith("0x")) {
@@ -54,16 +49,12 @@ export function validatePublicAddress(
   }
 
   if (input.toLowerCase().startsWith("bc1")) {
-    return validateBitcoin(input, "mainnet");
-  }
-
-  if (input.toLowerCase().startsWith("tb1")) {
-    return validateBitcoin(input, "testnet");
+    return validateBitcoin(input);
   }
 
   return {
     valid: false,
-    reason: "Formato nao reconhecido para ETH, Bitcoin mainnet bc1 ou Bitcoin testnet tb1."
+    reason: "Formato nao reconhecido para ETH ou Bitcoin mainnet bc1."
   };
 }
 
@@ -94,29 +85,25 @@ function validateEthereum(input: string): AddressValidationResult {
   };
 }
 
-function validateBitcoin(
-  input: string,
-  networkKind: "mainnet" | "testnet"
-): AddressValidationResult {
-  const expectedPrefix = networkKind === "mainnet" ? "bc1" : "tb1";
-  if (!input.toLowerCase().startsWith(expectedPrefix)) {
+function validateBitcoin(input: string): AddressValidationResult {
+  if (!input.toLowerCase().startsWith("bc1")) {
     return {
       valid: false,
-      reason: `Endereco Bitcoin ${networkKind} deve comecar com ${expectedPrefix}.`
+      reason: "Endereco Bitcoin mainnet deve comecar com bc1."
     };
   }
 
   try {
-    bitcoin.address.toOutputScript(input, getBitcoinJsNetwork(networkKind));
+    bitcoin.address.toOutputScript(input, getBitcoinJsNetwork());
     return {
       valid: true,
-      type: networkKind === "mainnet" ? "bitcoin-mainnet" : "bitcoin-testnet",
+      type: "bitcoin-mainnet",
       normalized: input
     };
   } catch {
     return {
       valid: false,
-      reason: `Endereco Bitcoin ${networkKind} invalido.`
+      reason: "Endereco Bitcoin mainnet invalido."
     };
   }
 }

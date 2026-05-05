@@ -2,8 +2,7 @@ export type Coin = "ETH" | "BTC";
 
 export type NetworkName =
   | "ethereum"
-  | "bitcoin-mainnet"
-  | "bitcoin-testnet";
+  | "bitcoin-mainnet";
 
 export interface PublicAddressRecord {
   coin: Coin;

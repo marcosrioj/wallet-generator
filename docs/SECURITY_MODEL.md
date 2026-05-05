@@ -29,7 +29,7 @@ Atacantes considerados:
 - Malware local tentando ler tela, teclado, memoria ou arquivos.
 - Suporte vendo ou copiando a frase de recuperacao.
 - Dependencia npm maliciosa ou comprometida.
-- Uso acidental de mainnet quando a intencao era testnet.
+- Uso acidental de Bitcoin mainnet quando a intencao era apenas treinamento.
 - Salvamento acidental de segredo em arquivo ou log.
 
 ## Risco De Malware Na Maquina
@@ -73,7 +73,7 @@ O projeto limpa buffers de seed usados na derivacao Bitcoin e remove referencias
 ## Recomendacoes Para Producao
 
 - Use maquina limpa e offline.
-- Prefira testnet para treinamento.
+- Para treinamento, nao use esta ferramenta com fundos reais.
 - Para dinheiro real, prefira hardware wallet.
 - Para valores altos, use multisig.
 - Mantenha procedimento escrito para suporte.

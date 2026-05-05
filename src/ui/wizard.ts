@@ -14,7 +14,7 @@ import {
   generationIntro
 } from "./messages.js";
 
-type GenerationKind = "ethereum" | "bitcoin-testnet" | "bitcoin-mainnet";
+type GenerationKind = "ethereum" | "bitcoin-mainnet";
 
 export async function runWizard(): Promise<void> {
   installNoNetworkGuard();
@@ -31,12 +31,10 @@ export async function runWizard(): Promise<void> {
         if (choice === "1") {
           await handleGeneration(rl, "ethereum");
         } else if (choice === "2") {
-          await handleGeneration(rl, "bitcoin-testnet");
-        } else if (choice === "3") {
           await handleGeneration(rl, "bitcoin-mainnet");
-        } else if (choice === "4") {
+        } else if (choice === "3") {
           await handleValidation(rl);
-        } else if (choice === "5") {
+        } else if (choice === "4") {
           console.log(OFFLINE_CHECKLIST);
         } else if (choice === "0") {
           running = false;
@@ -101,11 +99,7 @@ function createBatch(kind: GenerationKind, count: number): GeneratedAddressBatch
     return generateEthereumAddresses({ count });
   }
 
-  if (kind === "bitcoin-testnet") {
-    return generateBitcoinAddresses("testnet", { count });
-  }
-
-  return generateBitcoinAddresses("mainnet", { count });
+  return generateBitcoinAddresses({ count });
 }
 
 async function askAddressCount(rl: Interface): Promise<number> {
