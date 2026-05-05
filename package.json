@@ -1,0 +1,39 @@
+{
+  "name": "safe-crypto-address-generator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ferramenta local para gerar endereços públicos de Ethereum e Bitcoin sem salvar segredos.",
+  "type": "commonjs",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "wizard": "npm run build && node dist/index.js",
+    "test": "vitest run",
+    "lint": "eslint src test --ext .ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "check:math-random": "node scripts/check-math-random.mjs",
+    "check:output-secrets": "node scripts/check-output-secrets.mjs",
+    "verify": "npm run typecheck && npm run lint && npm test && npm run check:math-random && npm run check:output-secrets"
+  },
+  "dependencies": {
+    "@scure/bip39": "^1.5.0",
+    "bip32": "^5.0.1",
+    "bitcoinjs-lib": "^6.1.7",
+    "ethers": "^6.15.0",
+    "tiny-secp256k1": "^2.2.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.27.0",
+    "@types/node": "^22.15.32",
+    "@typescript-eslint/eslint-plugin": "^8.35.0",
+    "@typescript-eslint/parser": "^8.35.0",
+    "eslint": "^9.27.0",
+    "typescript": "^5.8.3",
+    "vitest": "^2.1.9"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": ["crypto", "wallet", "bip39", "bip84", "ethereum", "bitcoin", "offline"],
+  "author": "safe-crypto-address-generator"
+}
