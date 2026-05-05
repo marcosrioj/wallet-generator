@@ -1,0 +1,38 @@
+{
+  "name": "safe-crypto-address-generator",
+  "version": "1.0.0",
+  "description": "Ferramenta local e offline para gerar enderecos publicos ETH/EVM e Bitcoin Native SegWit.",
+  "type": "module",
+  "private": true,
+  "bin": {
+    "safe-crypto-address-generator": "dist/src/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/src/index.js",
+    "wizard": "tsx src/index.ts",
+    "test": "node --import tsx --test test/*.test.ts",
+    "lint": "eslint .",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "check:no-math-random": "node scripts/check-no-math-random.cjs",
+    "check:output-secrets": "node scripts/check-output-secrets.cjs",
+    "verify": "npm run typecheck && npm run lint && npm test && npm run check:no-math-random && npm run check:output-secrets"
+  },
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "dependencies": {
+    "@scure/bip39": "^1.6.0",
+    "bip32": "^5.0.0",
+    "bitcoinjs-lib": "^7.0.0",
+    "ethers": "^6.15.0",
+    "tiny-secp256k1": "^2.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "eslint": "^9.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.8.0",
+    "typescript-eslint": "^8.0.0"
+  }
+}

@@ -1,0 +1,13 @@
+node_modules/
+dist/
+coverage/
+output/
+*.log
+.env
+*.secret
+*.key
+/wallet*
+/seed*
+/mnemonic*
+.DS_Store
+npm-debug.log*
